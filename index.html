@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en" data-mode="design">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Loulwa Kalassina</title>
+<meta name="description" content="Product designer who thinks like a PM. Beirut-based, building for proptech and beyond.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one long scroll. A "Designer ⇄ PM" switch flips the lens on every project card. */
+:root{
+  --paper:#f4f2ee; --paper-2:#ebe7df; --ink:#16131f; --muted:#6b6676;
+  --line:#d8d3c9; --accent:#ff5a36; --accent-ink:#ffffff; --pm:#2d4bff;
+  --card:#fbfaf7;
+  --f-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --f-body:"Manrope","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#14121b; --paper-2:#1c1925; --ink:#f2efe8; --muted:#a29cad;
+  --line:#2e2a38; --accent:#ff6e4d; --accent-ink:#14121b; --pm:#7d91ff; --card:#1a1722; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#14121b; --paper-2:#1c1925; --ink:#f2efe8; --muted:#a29cad;
+  --line:#2e2a38; --accent:#ff6e4d; --accent-ink:#14121b; --pm:#7d91ff; --card:#1a1722; color-scheme:dark}
+html[data-mode="pm"]{--accent:var(--pm)}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;
+  padding-inline:20px;transition:background .4s}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto}
+.mono{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+/* nav */
+nav{display:flex;justify-content:space-between;align-items:center;padding-block:22px;gap:16px;flex-wrap:wrap}
+.logo{font-family:var(--f-display);font-weight:700;font-size:20px;text-decoration:none}
+.logo span{color:var(--accent);transition:color .4s}
+nav ul{list-style:none;display:flex;gap:22px;margin:0;padding:0;font-weight:600;font-size:15px}
+nav ul a{text-decoration:none}
+nav ul a:hover{color:var(--accent)}
+
+/* hero */
+.hero{padding-block:64px 48px;display:grid;gap:32px}
+.hero h1{font-family:var(--f-display);font-weight:600;font-size:clamp(40px,7.5vw,88px);line-height:1.02;letter-spacing:-.035em;margin:0;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--accent);transition:color .4s}
+.lede{max-width:56ch;font-size:19px;color:var(--muted);margin:0}
+.lede strong{color:var(--ink)}
+.lede [data-lens]{display:none}
+html[data-mode="design"] .lede [data-lens="design"],
+html[data-mode="pm"] .lede [data-lens="pm"]{display:inline}
+
+/* switch */
+.switch{display:inline-flex;align-items:center;gap:14px;background:var(--card);border:1.5px solid var(--ink);
+  border-radius:999px;padding:6px 18px 6px 6px;cursor:pointer;font:inherit;color:inherit;width:max-content;max-width:100%}
+.track{position:relative;width:132px;height:44px;border-radius:999px;background:var(--paper-2)}
+.track b{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;padding:0 14px;
+  font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.06em;color:var(--muted)}
+.knob{position:absolute;top:4px;left:4px;width:62px;height:36px;border-radius:999px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.06em;
+  transition:transform .35s cubic-bezier(.6,-0.3,.3,1.4),background .4s}
+html[data-mode="pm"] .knob{transform:translateX(62px)}
+.switch .hint{font-weight:600;font-size:15px}
+.ball{width:18px;height:18px;border-radius:50%;flex:none;
+  background:conic-gradient(from 0deg,#fff 0 10%,#bbb 0 20%,#fff 0 30%,#999 0 40%,#eee 0 50%,#aaa 0 60%,#fff 0 70%,#888 0 80%,#ddd 0 90%,#bbb 0);
+  box-shadow:0 0 12px var(--accent);animation:spin 6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* sections */
+section{padding-block:56px;border-top:1.5px solid var(--line)}
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:28px}
+h2{font-family:var(--f-display);font-weight:600;font-size:clamp(28px,4vw,40px);margin:0;letter-spacing:-.01em}
+
+/* projects */
+.projects{display:grid;gap:20px}
+.card{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;background:var(--card);border:1.5px solid var(--line);border-radius:20px;
+  padding:24px;text-decoration:none;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--ink);transform:translateY(-2px)}
+.card-copy{display:flex;flex-direction:column;gap:12px;min-width:0}
+.card h3{font-family:var(--f-display);font-weight:600;letter-spacing:-.01em;font-size:clamp(22px,2.6vw,28px);line-height:1.15;margin:0;text-wrap:balance}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--muted)}
+.status{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.status.live{color:var(--accent)}
+.lens{display:none}
+html[data-mode="design"] .lens.design,html[data-mode="pm"] .lens.pm{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:.2;transform:translateY(4px)}to{opacity:1;transform:none}}
+.lens p{margin:0;color:var(--muted)}
+.lens dl{margin:0;display:grid;gap:8px}
+.lens dt{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.lens dd{margin:0 0 4px;font-size:15px}
+.more{margin-top:auto;font-weight:700;font-size:15px}
+.more::after{content:" →"}
+
+/* visual placeholder */
+.visual{border-radius:14px;background:var(--paper-2);min-height:220px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.visual .ph{font-family:var(--f-mono);font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:12px}
+.phone{width:96px;height:180px;border-radius:18px;border:2px solid var(--ink);background:var(--card);position:absolute;bottom:-30px;display:flex;flex-direction:column;gap:6px;padding:16px 10px}
+.phone i{display:block;height:8px;border-radius:4px;background:var(--line)}
+.phone i:first-child{width:60%;background:var(--accent);transition:background .4s}
+.phone.p1{left:18%;transform:rotate(-6deg)}
+.phone.p2{right:18%;transform:rotate(5deg);bottom:-50px}
+.browser{width:76%;height:150px;border-radius:10px;border:2px solid var(--ink);background:var(--card);position:absolute;bottom:-20px;padding:24px 14px 0;display:grid;gap:8px}
+.browser::before{content:"";position:absolute;top:8px;left:10px;width:30px;height:6px;border-radius:3px;background:var(--line)}
+.browser i{display:block;height:10px;border-radius:5px;background:var(--line)}
+.browser i:nth-child(2){width:70%;height:22px;background:var(--accent);transition:background .4s}
+
+/* quotes */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+blockquote{margin:0;background:var(--card);border:1.5px dashed var(--line);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:12px}
+blockquote p{margin:0;font-size:16px}
+blockquote cite{font-style:normal;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+
+/* about */
+.about{display:grid;grid-template-columns:1.2fr 1fr;gap:40px}
+.about p{margin:0 0 14px;max-width:60ch}
+.facts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.facts li{display:flex;gap:12px;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:10px}
+.facts b{font-family:var(--f-mono);font-size:11px;font-weight:500;color:var(--accent);min-width:28px;transition:color .4s}
+
+/* contact */
+.contact{text-align:left;padding-block:80px}
+.contact h2{font-size:clamp(36px,7vw,80px);line-height:1;max-width:14ch}
+.contact h2 em{font-style:normal;color:var(--accent);transition:color .4s}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:999px;font-weight:700;text-decoration:none;border:1.5px solid var(--ink)}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+footer{padding-block:28px 40px;border-top:1.5px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+@media (max-width:760px){
+  .card,.about{grid-template-columns:1fr}
+  .quotes{grid-template-columns:1fr}
+  .visual{min-height:180px}
+  nav ul{gap:16px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav>
+  <a class="logo" href="#top">loulwa<span>.</span></a>
+  <ul>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="hero" id="top">
+  <div class="mono">Product designer · PM · Beirut</div>
+  <h1>I design products<br>and decide what's <em>worth building.</em></h1>
+  <p class="lede">
+    <span data-lens="design">Right now you're seeing me as a <strong>designer</strong>: flows, screens, and the details that make people enjoy a product.</span>
+    <span data-lens="pm">Right now you're seeing me as a <strong>PM</strong>: problems, trade-offs, and the decisions behind what got built.</span>
+    Flip the switch to see the other half.
+  </p>
+  <button class="switch" id="lensSwitch" type="button" aria-pressed="false" aria-label="Switch between designer and PM view">
+    <span class="track"><b><span>DESIGN</span><span>PM</span></b><span class="knob" id="knobLabel">DESIGN</span></span>
+    <span class="ball" aria-hidden="true"></span>
+    <span class="hint">Two lenses, one brain</span>
+  </button>
+</header>
+
+<section id="work">
+  <div class="sec-head">
+    <h2>Selected work</h2>
+    <span class="mono">4 projects · 2 min reads</span>
+  </div>
+
+  <div class="projects">
+    <a class="card" href="#">
+      <div class="card-copy">
+        <span class="status live">● Live · Beanstock</span>
+        <h3>Designing and shipping Beanstock's landlord app from 0 to 1</h3>
+        <div class="lens design"><p>Documents, overview, property info and rent, designed as one calm space for landlords to follow their investment.</p></div>
+        <div class="lens pm"><dl>
+          <dt>Problem</dt><dd>[One line: what landlords couldn't do before the app]</dd>
+          <dt>Key decision</dt><dd>[The biggest trade-off you made]</dd>
+          <dt>Outcome</dt><dd>[Your number, e.g. % of landlords active monthly]</dd>
+        </dl></div>
+        <div class="tags"><span>Proptech</span><span>0→1</span><span>Mobile + web</span></div>
+        <span class="more">Read the case study</span>
+      </div>
+      <div class="visual" aria-hidden="true"><div class="phone p1"><i></i><i></i><i></i><i></i></div><div class="phone p2"><i></i><i></i><i></i></div></div>
+    </a>
+
+    <a class="card" href="#">
+      <div class="card-copy">
+        <span class="status">◌ Specced · Paused · Beanstock</span>
+        <h3>Rethinking a lead-gen survey that lost landlords before the end</h3>
+        <div class="lens design"><p>A six-step rent estimator that replaces a static Typeform, with branching that skips what doesn't apply.</p></div>
+        <div class="lens pm"><dl>
+          <dt>Problem</dt><dd>[Baseline: how many landlords dropped off the old survey]</dd>
+          <dt>Key decision</dt><dd>Account creation as the lead capture moment</dd>
+          <dt>Status</dt><dd>Paused when the company refocused on other priorities</dd>
+        </dl></div>
+        <div class="tags"><span>Lead generation</span><span>Onboarding</span><span>Sales handoff</span></div>
+        <span class="more">Read the case study</span>
+      </div>
+      <div class="visual" aria-hidden="true"><div class="browser"><i></i><i></i><i></i></div></div>
+    </a>
+
+    <a class="card" href="#">
+      <div class="card-copy">
+        <span class="status live">● Launched · My own product</span>
+        <h3>Founding FitCheck and taking it from idea to the App Store</h3>
+        <div class="lens design"><p>A fashion resale app with 70+ screens and its own brand, designed end to end.</p></div>
+        <div class="lens pm"><dl>
+          <dt>Problem</dt><dd>[Who it's for and what was broken]</dd>
+          <dt>Key decision</dt><dd>[What you cut to launch]</dd>
+          <dt>Outcome</dt><dd>[Downloads, users, or validation results]</dd>
+        </dl></div>
+        <div class="tags"><span>Founder</span><span>Mobile app</span><span>Branding</span></div>
+        <span class="more">Read the case study</span>
+      </div>
+      <div class="visual" aria-hidden="true"><div class="phone p1"><i></i><i></i><i></i></div></div>
+    </a>
+
+    <a class="card" href="#">
+      <div class="card-copy">
+        <span class="status live">● Live · Client work</span>
+        <h3>Designing Rototip's website from brief to launch</h3>
+        <div class="lens design"><p>[One line on the visual direction and what makes it Rototip]</p></div>
+        <div class="lens pm"><dl>
+          <dt>Goal</dt><dd>[What the client needed the site to do]</dd>
+          <dt>Outcome</dt><dd>[Launch timeline, enquiries, or client feedback]</dd>
+        </dl></div>
+        <div class="tags"><span>Web</span><span>Brand</span><span>Freelance</span></div>
+        <span class="more">Read the case study</span>
+      </div>
+      <div class="visual" aria-hidden="true"><div class="browser"><i></i><i></i><i></i></div></div>
+    </a>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><h2>Kind words</h2><span class="mono">From people I've built with</span></div>
+  <div class="quotes">
+    <blockquote><p>[Ask a manager or your CEO for a short quote about how you think and decide.]</p><cite>Name · Role</cite></blockquote>
+    <blockquote><p>[Ask a developer about working from your specs.]</p><cite>Name · Role</cite></blockquote>
+    <blockquote><p>[Ask a designer or client about your craft.]</p><cite>Name · Role</cite></blockquote>
+  </div>
+</section>
+
+<section id="about">
+  <div class="about">
+    <div>
+      <h2 style="margin-bottom:20px">I bring the party to design.</h2>
+      <p>I spent five years studying architecture before I fell for digital products. I still think in plans and sections, I just draw them for screens now.</p>
+      <p>Since then I've designed at an agency, freelanced across food delivery, manufacturing and data products, and spent the last year as a PM on Beanstock's landlord app, where I learned that deciding what not to build is half the job.</p>
+    </div>
+    <ul class="facts">
+      <li><b>01</b>Five years of architecture in Turkey</li>
+      <li><b>02</b>Lived in Dubai, now based in Beirut</li>
+      <li><b>03</b>Co-founded NinoLabs, an AI consultancy, with my brother</li>
+      <li><b>04</b>Designed for global brands at VML</li>
+      <li><b>05</b>[One quirky fact only you would say]</li>
+    </ul>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2>Got pain points? <em>Let's talk users.</em></h2>
+  <div class="cta-row">
+    <a class="btn primary" href="mailto:[your-email]">[your-email]</a>
+    <a class="btn" href="https://www.linkedin.com/in/[your-handle]">LinkedIn</a>
+  </div>
+</section>
+
+<footer>
+  <span class="mono">Designed by me, built with Claude</span>
+  <span class="mono">© 2026 Loulwa Kalassina</span>
+</footer>
+
+</div>
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('lensSwitch'), label=document.getElementById('knobLabel');
+  function set(mode){
+    root.setAttribute('data-mode',mode);
+    btn.setAttribute('aria-pressed',mode==='pm');
+    label.textContent=mode==='pm'?'PM':'DESIGN';
+    try{localStorage.setItem('lens',mode)}catch(e){}
+  }
+  var saved=null; try{saved=localStorage.getItem('lens')}catch(e){}
+  set(saved==='pm'?'pm':'design');
+  btn.addEventListener('click',function(){set(root.getAttribute('data-mode')==='pm'?'design':'pm')});
+})();
+</script>
+</body>
+</html>
